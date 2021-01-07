@@ -18,15 +18,16 @@ public class MainDriver extends PApplet {
 
     @Override
     public void settings() {
-        super.settings();
         size(screenWidth, screenHeight);
     }
 
     @Override
     public void setup() {
-        super.setup();
+        int ballStartingXPosition = 0;
         for(int ballCounter = 0; ballCounter < numberOfBalls; ballCounter++){
-            Ball ball = new Ball(0, getBallYPosition(ballCounter), getBallSpeed(ballCounter));
+            int ballYPosition = getBallYPosition(ballCounter);
+            int ballSpeed = getBallSpeed(ballCounter);
+            Ball ball = new Ball(ballStartingXPosition, ballYPosition, ballSpeed);
             ballsContainer.add(ball);
         }
     }
@@ -43,7 +44,7 @@ public class MainDriver extends PApplet {
     public void draw() {
         for(Ball ball: ballsContainer){
             ball.moveBall();
-            ellipse(ball.positionX, ball.positionY, ball.getDiameter(), ball.getDiameter());
+            ball.drawBall(this);
         }
     }
 

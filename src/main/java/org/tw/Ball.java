@@ -10,10 +10,11 @@ public class Ball {
         this.speed = speed;
     }
 
-    int getDiameter() {
-        return diameter;
-    }
-    void moveBall(){
+    public void moveBall(){
         this.positionX += speed;
+    }
+
+    public void drawBall(MainDriver mainDriver) {
+        mainDriver.ellipse(positionX, positionY, diameter, diameter);
     }
 }
